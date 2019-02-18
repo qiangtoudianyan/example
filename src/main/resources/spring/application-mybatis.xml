@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 开启spring的事务管理 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="userDataSource"/>
+    </bean>
+    <!-- 开启spring对事务的注解支持 -->
+    <tx:annotation-driven proxy-target-class="true"/>
+    <!-- druid连接属性配置 -->
+    <bean id="userDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close"
+          p:url="${datasource.url}"
+          p:username="${datasource.username}"
+          p:password="${datasource.password}"
+          p:initialSize="${datasource.initialSize}"
+          p:minIdle="${datasource.minIdle}"
+          p:maxActive="${datasource.maxActive}"
+          p:maxWait="${datasource.maxWait}"
+          p:timeBetweenEvictionRunsMillis="${datasource.timeBetweenEvictionRunsMillis}"
+          p:minEvictableIdleTimeMillis="${datasource.minEvictableIdleTimeMillis}"
+          p:validationQuery="${datasource.validationQuery}"
+          p:testWhileIdle="${datasource.testWhileIdle}"
+          p:testOnBorrow="${datasource.testOnBorrow}"
+          p:testOnReturn="${datasource.testOnReturn}"
+          p:poolPreparedStatements="${datasource.poolPreparedStatements}"
+          p:maxPoolPreparedStatementPerConnectionSize="${datasource.maxPoolPreparedStatementPerConnectionSize}"
+          p:connectionProperties="config.decrypt=true;config.decrypt.key=${datasource.publickey}"
+          p:filters="${datasource.filters}">
+    </bean>
+
+    <!-- 配置mybatis的SqlSessionFactoryBean属性 -->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="userDataSource"/>
+        <property name="typeAliasesPackage" value="com.boco.mis.pc.dal.entity"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*Mapper.mybatis.xml"/>
+        <property name="configurationProperties">
+            <props>
+                <prop key="key">${aes.key}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 指定mybatis的@mapper的扫描范围 -->
+    <bean name="userMapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage"
+                  value="com.boco.mis.*.dal.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
+    </bean>
+</beans>

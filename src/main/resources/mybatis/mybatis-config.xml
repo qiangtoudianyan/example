@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="callSettersOnNulls" value="true" />
+
+		<setting name="cacheEnabled" value="true" />
+
+		<setting name="lazyLoadingEnabled" value="true" />
+
+		<setting name="aggressiveLazyLoading" value="true" />
+
+		<setting name="multipleResultSetsEnabled" value="true" />
+
+		<setting name="useColumnLabel" value="true" />
+
+		<setting name="useGeneratedKeys" value="false" />
+
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+
+		<setting name="autoMappingBehavior" value="PARTIAL" />
+
+		<setting name="defaultExecutorType" value="SIMPLE" />
+
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+
+		<setting name="localCacheScope" value="SESSION" />
+
+		<setting name="jdbcTypeForNull" value="NULL" />
+
+	</settings>
+	<typeAliases>
+		<typeAlias alias="Integer" type="java.lang.Integer" />
+		<typeAlias alias="Long" type="java.lang.Long" />
+		<typeAlias alias="HashMap" type="java.util.HashMap" />
+		<typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
+		<typeAlias alias="ArrayList" type="java.util.ArrayList" />
+		<typeAlias alias="LinkedList" type="java.util.LinkedList" />
+		<typeAlias alias="User" type="com.boco.mis.pc.dal.entity.User" />
+		<typeAlias alias="Courseware" type="com.boco.mis.pc.dto.Courseware" />
+		<typeAlias alias="TheoryCourseware" type="com.boco.mis.pc.dal.entity.TheoryCourseware" />
+		<typeAlias alias="EnglishCourseware" type="com.boco.mis.pc.dal.entity.EnglishCourseware" />
+		<typeAlias alias="Organization" type="com.boco.mis.pc.dal.entity.Organization" />
+		<typeAlias alias="Role" type="com.boco.mis.pc.dal.entity.Role" />
+		<typeAlias alias="OperationPower" type="com.boco.mis.pc.dal.entity.OperationPower" />
+		<typeAlias alias="LoginLog" type="com.boco.mis.pc.dal.entity.LoginLog" />
+		<typeAlias alias="TheoryCoursewareForm" type="com.boco.mis.pc.dto.TheoryCoursewareForm" />
+		<typeAlias alias="EnglishCoursewareForm" type="com.boco.mis.pc.dto.EnglishCoursewareForm" />
+		<typeAlias alias="EnglishTape" type="com.boco.mis.pc.dal.entity.EnglishTape" />
+		<typeAlias alias="Book" type="com.boco.mis.pc.dal.entity.Book" />
+		<typeAlias alias="UserManagement" type="com.boco.mis.pc.dto.UserManagement" />
+		<typeAlias alias="UserTree" type="com.boco.mis.pc.dto.UserTree" />
+		<typeAlias alias="UserPower" type="com.boco.mis.pc.dal.entity.UserPower" />
+		<typeAlias alias="UserRole" type="com.boco.mis.pc.dal.entity.UserRole" />
+		<typeAlias alias="RoleOperation" type="com.boco.mis.pc.dal.entity.RoleOperation" />
+		<typeAlias alias="RoleMenu" type="com.boco.mis.pc.dal.entity.RoleMenu" />
+		<typeAlias alias="OperationTree" type="com.boco.mis.pc.dto.OperationTree" />
+		<typeAlias alias="OperationLog" type="com.boco.mis.common.dal.entity.OperationLog" />
+		<typeAlias alias="EnglishTapeForm" type="com.boco.mis.pc.dto.EnglishTapeForm" />
+		<typeAlias alias="UserForm" type="com.boco.mis.pc.dto.UserForm" />
+		<typeAlias alias="CountReport" type="com.boco.mis.pc.dal.entity.CountReport" />
+	</typeAliases>
+</configuration> 
